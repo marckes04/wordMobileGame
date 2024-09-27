@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
 
     [Header("Elements")]
     [SerializeField] private WordContainer[] wordContainers;
+    [SerializeField] private Button tryButton;
 
 
     [Header("settings")]
-    private int currentWordContainer;
+    private int currentWordContainerIndex;
 
+    private bool canAddLetter = true;
 
     // Start is called before the first frame update
     void Start()
@@ -20,12 +22,6 @@ public class InputManager : MonoBehaviour
         Initialize();
 
         KeyboardKey.onKeyPressed += KeyPressedCallback;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void Initialize()
@@ -38,10 +34,63 @@ public class InputManager : MonoBehaviour
 
     private void KeyPressedCallback(char letter)
     {
-        if (wordContainers[currentWordContainer].IsComplete())
-            currentWordContainer++;
 
-        wordContainers[currentWordContainer].Add(letter);
+
+        if (!canAddLetter) 
+            return;
+        
+
+
+        wordContainers[currentWordContainerIndex].Add(letter);
+        if (wordContainers[currentWordContainerIndex].IsComplete())
+        {
+           canAddLetter = false;
+           EnableTryButton();
+
+
+            // checkWord();
+            //currentWordContainer++;
+        }
+    }
+
+    public void checkWord()
+    {
+        string wordToCheck = wordContainers[currentWordContainerIndex].GetWord();
+        string secretWord = WordManager.instance.GetSecretWord();
+
+        if (secretWord == wordToCheck)
+        {
+            Debug.Log("Level complete");
+        }
+        else
+        {
+            Debug.Log("Wrong word");
+
+            canAddLetter = true;
+            DisableTryButton();
+            currentWordContainerIndex++;
+        }
+           
+    }
+
+    public void BackspacePressedCallBack()
+    {
+       bool removeLetter =  wordContainers[currentWordContainerIndex].RemoveLetter();
+
+        if (removeLetter)
+            DisableTryButton();
+
+        canAddLetter = true;
+    }
+
+    private void EnableTryButton()
+    {
+        tryButton.interactable = true;
+    }
+
+    private void DisableTryButton()
+    {
+        tryButton.interactable = false;
     }
 
 }
