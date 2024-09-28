@@ -2619,6 +2619,7 @@ GameObject:
   - component: {fileID: 778159553}
   - component: {fileID: 778159552}
   - component: {fileID: 778159551}
+  - component: {fileID: 778159554}
   m_Layer: 5
   m_Name: Keyboard Container
   m_TagString: Untagged
@@ -2712,6 +2713,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778159549}
   m_CullTransparentMesh: 1
+--- !u!114 &778159554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778159549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99bcce49b214e5446a4763ca6c60e478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keys: []
 --- !u!224 &779095475 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3483222243197554771, guid: 725c6d93428f37a4a8c645b7dbc8cd69, type: 3}
@@ -6078,6 +6092,7 @@ MonoBehaviour:
   - {fileID: 180052230}
   - {fileID: 893728994}
   tryButton: {fileID: 2039069093}
+  keyboardColorizer: {fileID: 778159554}
 --- !u!4 &2025208153
 Transform:
   m_ObjectHideFlags: 0
@@ -6160,7 +6175,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 0.39215687}
