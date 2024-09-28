@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     [Header("Elements")]
     [SerializeField] private WordContainer[] wordContainers;
     [SerializeField] private Button tryButton;
+    [SerializeField] private KeyboardColorizer keyboardColorizer;
 
 
     [Header("settings")]
@@ -57,6 +58,9 @@ public class InputManager : MonoBehaviour
     {
         string wordToCheck = wordContainers[currentWordContainerIndex].GetWord();
         string secretWord = WordManager.instance.GetSecretWord();
+
+        wordContainers[currentWordContainerIndex].Colorize(secretWord);
+        keyboardColorizer.Colorize(secretWord, wordToCheck); 
 
         if (secretWord == wordToCheck)
         {
