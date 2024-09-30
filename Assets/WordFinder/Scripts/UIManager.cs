@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -21,7 +22,26 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        
+        GameManager.onGameStateChanged += GameStateChangedCallback;
+    }
+
+
+    private void OnDestroy()
+    {
+        GameManager.onGameStateChanged -= GameStateChangedCallback;
+    }
+
+
+    private void GameStateChangedCallback(GameState gameState)
+    {
+        switch(gameState)
+        {
+            case GameState.LevelComplete:
+                ShowLevelComplete();
+                HideGame();
+                break;
+        }
+           
     }
 
     // Update is called once per frame
@@ -30,12 +50,14 @@ public class UIManager : MonoBehaviour
         
     }
 
+
+
     private void ShowGame()
     {
         ShowCG(gameCG);
     }
 
-    private void hideGame()
+    private void HideGame()
     {
         HideCG(gameCG);
     }

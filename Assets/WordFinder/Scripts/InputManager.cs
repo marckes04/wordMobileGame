@@ -25,6 +25,12 @@ public class InputManager : MonoBehaviour
         KeyboardKey.onKeyPressed += KeyPressedCallback;
     }
 
+
+    private void OnDestroy()
+    {
+        KeyboardKey.onKeyPressed -= KeyPressedCallback;
+    }
+
     private void Initialize()
     {
         for (int i = 0; i < wordContainers.Length; i++) 
@@ -32,6 +38,9 @@ public class InputManager : MonoBehaviour
             wordContainers[i].Initialize();
         }
     }
+
+    
+
 
     private void KeyPressedCallback(char letter)
     {
@@ -64,7 +73,7 @@ public class InputManager : MonoBehaviour
 
         if (secretWord == wordToCheck)
         {
-            Debug.Log("Level complete");
+            SetLevelComplete();
         }
         else
         {
@@ -75,6 +84,11 @@ public class InputManager : MonoBehaviour
             currentWordContainerIndex++;
         }
            
+    }
+
+    private void SetLevelComplete()
+    {
+        GameManager.instance.SetGameState(GameState.LevelComplete);
     }
 
     public void BackspacePressedCallBack()
