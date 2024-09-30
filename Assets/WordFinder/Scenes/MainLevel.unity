@@ -1815,8 +1815,8 @@ CanvasGroup:
   m_GameObject: {fileID: 448791919}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &448791922
 MonoBehaviour:
@@ -6330,10 +6330,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.17285508, g: 0.7830189, b: 0.3738502, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
+    m_NormalColor: {r: 0.1898896, g: 0.7924528, b: 0.29350013, a: 1}
+    m_HighlightedColor: {r: 0.19215687, g: 0.79607844, b: 0.29411766, a: 0}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.15194014, g: 0.8301887, b: 0.16305895, a: 1}
     m_DisabledColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 0.39215687}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
