@@ -88,7 +88,16 @@ public class InputManager : MonoBehaviour
 
     private void SetLevelComplete()
     {
+        UpdateData();
         GameManager.instance.SetGameState(GameState.LevelComplete);
+    }
+
+    private void UpdateData()
+    {
+        int scoreToAdd = 6 - currentWordContainerIndex;
+
+        DataManager.instance.IncreaseScore(scoreToAdd);
+        DataManager.instance.AddCoins(scoreToAdd * 3);
     }
 
     public void BackspacePressedCallBack()
