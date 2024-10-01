@@ -78,10 +78,6 @@ public class InputManager : MonoBehaviour
         {
            canAddLetter = false;
            EnableTryButton();
-
-
-            // checkWord();
-            //currentWordContainer++;
         }
     }
 
@@ -99,13 +95,20 @@ public class InputManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Wrong word");
-
-            canAddLetter = true;
-            DisableTryButton();
+           // Debug.Log("Wrong word");
             currentWordContainerIndex++;
+            DisableTryButton();
+
+            if (currentWordContainerIndex >= wordContainers.Length) 
+            {
+                DataManager.instance.ResetScore();
+                GameManager.instance.SetGameState(GameState.GameOver);
+            }
+            else
+            {
+                canAddLetter = true;
+            }
         }
-           
     }
 
     private void SetLevelComplete()
@@ -124,6 +127,8 @@ public class InputManager : MonoBehaviour
 
     public void BackspacePressedCallBack()
     {
+        if (GameManager.instance.IsGameState()) ;
+
        bool removeLetter =  wordContainers[currentWordContainerIndex].RemoveLetter();
 
         if (removeLetter)

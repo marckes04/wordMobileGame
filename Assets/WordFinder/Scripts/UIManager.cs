@@ -114,7 +114,7 @@ public class UIManager : MonoBehaviour
         gameOverSecretWord.text = WordManager.instance.GetSecretWord();
         gameOverBestScore.text = DataManager.instance.GetBestScore().ToString();
 
-        ShowCG(gameCG);
+        ShowCG(gameoverCG);
     }
 
     private void HideGameover()

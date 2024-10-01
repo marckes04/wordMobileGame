@@ -57,6 +57,12 @@ public class DataManager : MonoBehaviour
         SaveData();
     }
 
+    public void ResetScore()
+    {
+        score = 0;
+        SaveData() ;
+    }
+
     public int GetCoins()
     {
         return coins;
