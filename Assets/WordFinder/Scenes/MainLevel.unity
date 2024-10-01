@@ -1814,7 +1814,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448791919}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -4335,7 +4335,7 @@ GameObject:
   - component: {fileID: 835616916}
   - component: {fileID: 835616915}
   m_Layer: 5
-  m_Name: Score Amount
+  m_Name: Best Score Amount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6353,7 +6353,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1432424697}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1525498620}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: NextButtonCallback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1432424697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8310,6 +8322,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameCG: {fileID: 2070440737}
   levelCompleteCG: {fileID: 448791921}
+  levelCompleteCoins: {fileID: 74008076}
+  levelCompleteSecretWord: {fileID: 717880010}
+  levelCompleteScore: {fileID: 183608678}
+  levelCompleteBestScore: {fileID: 835616915}
+  gameScore: {fileID: 2112406145}
+  gameCoins: {fileID: 1634848188}
 --- !u!224 &1899410003 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3483222243197554771, guid: 725c6d93428f37a4a8c645b7dbc8cd69, type: 3}

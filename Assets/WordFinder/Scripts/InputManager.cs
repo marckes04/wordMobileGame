@@ -23,16 +23,38 @@ public class InputManager : MonoBehaviour
         Initialize();
 
         KeyboardKey.onKeyPressed += KeyPressedCallback;
+        GameManager.onGameStateChanged += GameStateChangedCallback;
     }
 
 
     private void OnDestroy()
     {
         KeyboardKey.onKeyPressed -= KeyPressedCallback;
+        GameManager.onGameStateChanged -= GameStateChangedCallback;
+    }
+
+    private void GameStateChangedCallback(GameState gameState)
+    {
+        switch (gameState)
+        {
+            case GameState.Game:
+               Initialize();
+                break;
+
+            case GameState.LevelComplete:
+               
+                break;
+        }
+
     }
 
     private void Initialize()
     {
+        currentWordContainerIndex = 0;
+        canAddLetter = true;
+
+        DisableTryButton();
+
         for (int i = 0; i < wordContainers.Length; i++) 
         {
             wordContainers[i].Initialize();
