@@ -82,4 +82,9 @@ public class KeyboardKey : MonoBehaviour
         validity=Validity.Invalid;
     }
 
+    public bool IsUntouched()
+    {
+        return validity == Validity.None;
+    }
+
 }
