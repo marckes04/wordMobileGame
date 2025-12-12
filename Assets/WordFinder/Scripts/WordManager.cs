@@ -11,6 +11,9 @@ public static WordManager instance;
     [SerializeField] private TextAsset wordsText;
     private string words;
 
+    [Header(" Settings ")]
+    private bool shouldReset;
+
     private void Awake()
     {
         if (instance == null)
@@ -24,8 +27,45 @@ public static WordManager instance;
 
     void Start()
     {
-      SetNewSecretWord();    
+      SetNewSecretWord();
+
+        GameManager.onGameStateChanged += GameStateChangedCallback;
+
+
     }
+
+    private void OnDestroy()
+    {
+        GameManager.onGameStateChanged -= GameStateChangedCallback;
+    }
+
+    private void GameStateChangedCallback(GameState gameState)
+    {
+        switch (gameState)
+        {
+            case GameState.Menu:
+
+               
+
+                break;
+
+            case GameState.Game:
+
+                if (shouldReset)
+                    SetNewSecretWord();
+                break;
+
+            case GameState.LevelComplete:
+                shouldReset = true;
+                break;
+
+            case GameState.GameOver:
+                shouldReset = true;
+                break;
+        }
+
+    }
+
 
     public string GetSecretWord() 
     { 
@@ -42,6 +82,8 @@ public static WordManager instance;
         int wordStartIndex = wordIndex * 7;
 
         secretword = words.Substring(wordStartIndex, 5).ToUpper();
+    
+        shouldReset = false;
     }
 
 }

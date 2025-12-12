@@ -10,16 +10,57 @@ public class HitManager : MonoBehaviour
     [SerializeField] private GameObject keyboard;
     private KeyboardKey[] keys;
 
+    [Header(" Settings ")]
+    private bool shouldReset;
+
     private void Awake()
     {
-       
+        keys = keyboard.GetComponentsInChildren<KeyboardKey>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        keys = keyboard.GetComponentsInChildren<KeyboardKey>();
+        GameManager.onGameStateChanged += GameStateChangedCallback;
     }
+
+    private void OnDestroy()
+    {
+        GameManager.onGameStateChanged -= GameStateChangedCallback;
+    }
+
+    private void GameStateChangedCallback(GameState gameState)
+    {
+        switch (gameState)
+        {
+            case GameState.Menu:
+
+
+
+                break;
+
+            case GameState.Game:
+
+                if (shouldReset)
+                {
+                    letterHintGivenIndices.Clear();
+                    shouldReset = false;
+                }
+                    
+                   
+                break;
+
+            case GameState.LevelComplete:
+                shouldReset = true;
+                break;
+
+            case GameState.GameOver:
+                shouldReset = true;
+                break;
+        }
+
+    }
+
 
     // Update is called once per frame
     void Update()
