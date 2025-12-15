@@ -92,6 +92,7 @@ public class InputManager : MonoBehaviour
 
 
         wordContainers[currentWordContainerIndex].Add(letter);
+
         if (wordContainers[currentWordContainerIndex].IsComplete())
         {
            canAddLetter = false;
@@ -145,7 +146,8 @@ public class InputManager : MonoBehaviour
 
     public void BackspacePressedCallBack()
     {
-        if (GameManager.instance.IsGameState()) ;
+        if (GameManager.instance.IsGameState()) 
+            return;
 
        bool removeLetter =  wordContainers[currentWordContainerIndex].RemoveLetter();
 
