@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class InputManager : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class InputManager : MonoBehaviour
     private bool canAddLetter = true;
 
     private bool shouldReset;
+
+    [Header(" Events ")]
+    public static Action onLetterAdded;
+    public static Action onLetterRemoved;
 
     private void Awake()
     {
@@ -98,6 +103,7 @@ public class InputManager : MonoBehaviour
            canAddLetter = false;
            EnableTryButton();
         }
+        onLetterAdded? .Invoke();
     }
 
     public void checkWord()
@@ -155,6 +161,8 @@ public class InputManager : MonoBehaviour
             DisableTryButton();
 
         canAddLetter = true;
+
+        onLetterRemoved?.Invoke();
     }
 
     private void EnableTryButton()
